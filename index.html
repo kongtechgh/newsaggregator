@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NewsLens - Verified News Aggregator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="logo">
+        <span class="logo-icon">&#x1F4F0;</span>
+        NewsLens
+      </div>
+      <div class="header-controls">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search articles..." aria-label="Search articles">
+        </div>
+        <select id="sort-select" aria-label="Sort articles">
+          <option value="date">Newest first</option>
+          <option value="credibility">Most credible</option>
+        </select>
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">&#9790;</button>
+        <button class="btn-text" id="change-api-key">API Key</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Tabs -->
+  <nav class="category-bar">
+    <div class="category-tabs" id="category-tabs"></div>
+  </nav>
+
+  <!-- Info Bar -->
+  <div class="info-bar">
+    <span class="source-count" id="source-count">Loading articles...</span>
+  </div>
+
+  <!-- Articles Grid -->
+  <main class="articles-grid" id="articles-grid"></main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    NewsLens aggregates news from credible sources and validates them through cross-referencing.
+    All articles link directly to their original source.
+  </footer>
+
+  <!-- API Key Modal -->
+  <div class="modal-overlay hidden" id="api-key-modal">
+    <div class="modal">
+      <h2>Enter Your NewsAPI Key</h2>
+      <p>
+        Get a free API key from <a href="https://newsapi.org/register" target="_blank" rel="noopener noreferrer">newsapi.org</a>
+        to fetch live news. Your key is stored locally in your browser.
+      </p>
+      <form id="api-key-form">
+        <input type="text" id="api-key-input" placeholder="e.g. abc123def456..." required>
+        <button type="submit">Save &amp; Load News</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
