@@ -8,16 +8,19 @@ function getApiKey() {
 }
 
 function setApiKey(key) {
-  localStorage.setItem('newsapi_key', key);
+  const trimmed = typeof key === 'string' ? key.trim() : '';
+  if (trimmed) localStorage.setItem('newsapi_key', trimmed);
+  else localStorage.removeItem('newsapi_key');
 }
 
 // Fetch top headlines by category
 async function fetchTopHeadlines(category = 'general', country = 'us', pageSize = 20) {
   const apiKey = getApiKey();
   if (!apiKey) throw new Error('NewsAPI key not set');
+  const safeCategory = CATEGORIES.includes(category) ? category : 'general';
 
   const params = new URLSearchParams({
-    category,
+    category: safeCategory,
     country,
     pageSize: String(pageSize),
     apiKey,
